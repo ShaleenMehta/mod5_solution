@@ -3,7 +3,7 @@
 
   angular.module('restuarant')
     .component('myInfo',{
-      templateUrl: 'html/myinfo.html',
+      templateUrl: 'html/myInfo.html',
       bindings:{
         userDetails: '<'
       }

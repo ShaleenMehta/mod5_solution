@@ -74,11 +74,11 @@
     <tr>
       <td>Your favorite dish</td>
       <td>&nbsp;:&nbsp;
-        <input type = "text" required name = "FavoriteDishMenuNumber" placeholder="DK"
+        <input type = "text" required name = "FavoriteDishMenuNumber" placeholder="DK1"
           required ng-model = "$ctrl.User.FavoriteDish.short_name" size="3"
           ng-blur="$ctrl.checkFavoriteDish()"
         />
-        (<i>enter a menu number for e.g. DK</i>)
+        (<i>enter a menu number for e.g. DK1</i>)
       </td>
       <td>&nbsp;
         <span class="error" ng-if = "RegForm.FavoriteDishMenuNumber.$touched && RegForm.FavoriteDishMenuNumber.$error.required">
