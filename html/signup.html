@@ -1,0 +1,111 @@
+<style>
+  .ng-touched.ng-valid{
+    border: 2px green solid;
+  }
+  .ng-touched.ng-invalid{
+    border: 2px red solid;
+  }
+  input, button{color: black}
+  button[disabled]{color: grey}
+  .error{color: red}
+</style>
+<h1 align="center">SignUp Form page</h1>
+<form name = "RegForm" noValidate>
+  <table>
+    <tr>
+      <td>First name</td>
+      <td>&nbsp;:&nbsp;
+        <input type = "text" name = "userfirstname"
+          required size="15"
+          ng-model = "$ctrl.User.FirstName"
+        />
+      </td>
+      <td>&nbsp;
+        <span class="error" ng-if = "RegForm.userfirstname.$touched && RegForm.userfirstname.$invalid">
+          First name cannot be left blank
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Last name</td>
+      <td>&nbsp;:&nbsp;
+        <input type = "text" name = "userlastname"
+          required size="15"
+          ng-model = "$ctrl.User.LastName"
+        />
+      </td>
+      <td>&nbsp;
+        <span class="error" ng-if = "RegForm.userlastname.$touched && RegForm.userlastname.$error.required">
+          Last name cannot be left blank
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Email address</td>
+      <td>&nbsp;:&nbsp;
+        <input type = "email" required name = "emailid" required ng-model = "$ctrl.User.EmailAddress" size="30" />
+      </td>
+      <td>&nbsp;
+        <span class="error" ng-if = "RegForm.emailid.$touched && RegForm.emailid.$invalid">
+          Email address
+          <span ng-if = "RegForm.emailid.$error.required">cannot be left blank</span>
+          <span ng-if = "RegForm.emailid.$error.email">is not valid</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td>&nbsp;:&nbsp;
+        <input type = "text" name = "phone" required size="12"
+          placeholder="(###)###-####"
+          ng-model = "$ctrl.User.PhoneNumber"
+          pattern="\((\d{3})\)(\d{3})-(\d{4})"
+        />
+      </td>
+      <td>&nbsp;
+        <span class="error" ng-if = "RegForm.phone.$touched && RegForm.phone.$invalid">
+          Phone number
+          <span ng-if = "RegForm.phone.$error.required">cannot be left blank</span>
+          <span ng-if = "RegForm.phone.$error.pattern">must be in the format (###)###-####.</span>
+        </span>
+      </td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <td>Your favorite dish</td>
+      <td>&nbsp;:&nbsp;
+        <input type = "text" required name = "FavoriteDishMenuNumber" placeholder="DK"
+          required ng-model = "$ctrl.User.FavoriteDish.short_name" size="3"
+          ng-blur="$ctrl.checkFavoriteDish()"
+        />
+        (<i>enter a menu number for e.g. DK</i>)
+      </td>
+      <td>&nbsp;
+        <span class="error" ng-if = "RegForm.FavoriteDishMenuNumber.$touched && RegForm.FavoriteDishMenuNumber.$error.required">
+          Favorite dish's menu number cannot be left blank
+        </span>
+        <span class="error" ng-if = "$ctrl.User.FavoriteDish.status === 'invalid'">
+          No such menu number exists
+        </span>
+      </td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <td colspan=2 align="center">
+        <button ng-model = "$ctrl.Submit"
+          ng-disabled = "RegForm.$invalid"
+          ng-click="$ctrl.submit()"
+        >Submit</button>
+      </td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <td colspan=2 align="center">
+        <span style="color: yellow" ng-if = "!RegForm.$invalid && $ctrl.User.status === 'valid'">
+          Your information has been saved, visit <a ui-sref="public.myinfo">my Info</a>
+        </br/>
+        </span>
+      </td>
+    </tr>
+  </table>
+</form>
