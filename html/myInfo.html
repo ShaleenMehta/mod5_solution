@@ -15,9 +15,10 @@
   <tr><td>&nbsp;</td></tr>
   <tr>
     <td>Your favorite dish</td>
-    <td>&nbsp;{{$ctrl.userDetails.FavoriteDish.name}} (<i>{{$ctrl.userDetails.FavoriteDish.short_name}}</i>):&nbsp;
-      <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{$ctrl.userDetails.FavoriteDish.category_short_name}}/{{$ctrl.userDetails.FavoriteDish.short_name}}.jpg">
-      </td>
+    <td>
+      <menu-item category_short_name="$ctrl.userDetails.FavoriteDish.category_short_name"
+        item="$ctrl.userDetails.FavoriteDish"/>
+    </td>
   </tr>
 </table>
 <span class="error" ng-if="$ctrl.userDetails.status !== 'valid'">

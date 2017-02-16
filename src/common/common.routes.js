@@ -28,7 +28,7 @@
       })
       .state('public.menuItem',{
         url: '/menu/{item}',
-        template: '<menu-item all-items="$ctrl.items"/>',
+        templateUrl: 'html/menu/menuItems.html',
         controller: 'MenuItemsController as $ctrl',
         resolve:{
           menuItemData: ['MenuSvc', '$stateParams', function(MenuSvc, $stateParams) {

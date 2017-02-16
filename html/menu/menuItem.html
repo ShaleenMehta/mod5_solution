@@ -1,21 +1,16 @@
-<div class = "container">
-  <h2 id="menu-categories-title" class="text-center">{{$ctrl.allItems.category.name}} Menu</h2>
-  <div class="text-center">{{$ctrl.allItems.category.special_instructions}}</div>
-
-  <div class="menu-item-tile col-md-6" ng-repeat="item in $ctrl.allItems.menu_items">
-    <div class="row">
-      <div class="col-sm-5">
-        <div class="menu-item-photo">
-          <div>{{item.short_name}}</div>
-          <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{$ctrl.allItems.category.short_name}}/{{item.short_name}}.jpg">
-        </div>
-        <div class="menu-item-price">{{item.price_small}}<span> {{item.small_portion_name}}</span> {{item.price_large}} <span>{{item.large_portion_name}}</span></div>
+<div class="menu-item-tile col-md-6">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="menu-item-photo">
+        <div>{{$ctrl.item.short_name}}</div>
+        <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{$ctrl.categoryShortName}}/{{$ctrl.item.short_name}}.jpg">
       </div>
-      <div class="menu-item-description col-sm-7">
-        <h3 class="menu-item-title">{{item.name}}</h3>
-        <p class="menu-item-details">{{item.description}}</p>
-      </div>
+      <div class="menu-item-price">{{$ctrl.item.price_small | currency}}<span> {{$ctrl.item.small_portion_name}}</span> {{$ctrl.item.price_large | currency}} <span>{{$ctrl.item.large_portion_name}}</span></div>
     </div>
-    <hr class="visible-xs">
+    <div class="menu-item-description col-sm-7">
+      <h3 class="menu-item-title">{{$ctrl.item.name}}</h3>
+      <p class="menu-item-details">{{$ctrl.item.description}}</p>
+    </div>
   </div>
+  <hr class="visible-xs">
 </div>
