@@ -8,7 +8,7 @@
   function SignUpController_fn(MenuSvc, UserSvc) {
     var $ctrl = this;
 
-    $ctrl.User = UserSvc.User(true);
+    $ctrl.User = UserSvc.User();
 
     $ctrl.checkFavoriteDish = function () {
       $ctrl.User.status = 'pristine';
